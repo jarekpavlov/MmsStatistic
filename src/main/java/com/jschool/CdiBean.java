@@ -1,18 +1,19 @@
 package com.jschool;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
+import javax.ejb.Singleton;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
 @Named(value = "cdiBean")
-@SessionScoped
+@Singleton
 public class CdiBean implements Serializable {
     String field;
+    List<CountByProduct> productList = null;
 
     @EJB
-    private EjbBean ejbBean;
+    private ReceiverBean receiverBean;
 
     public String getField() {
         return field;
@@ -23,8 +24,8 @@ public class CdiBean implements Serializable {
     }
 
     public void someAction() {
-        List<CountByProduct> list = ejbBean.getStatistic("30");
-        System.out.println(list);
+        productList = receiverBean.getProductList();
+        System.out.println(productList);
 
     }
 }
