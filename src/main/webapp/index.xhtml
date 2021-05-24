@@ -10,7 +10,8 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
 <h:head>
     <title>Mms Project Statistic</title>
@@ -18,8 +19,19 @@
 
 <h:body>
     <h:form>
-        <h:inputText value="#{cdiBean.field}" ></h:inputText>
-        <h:commandButton value="Send" action="#{cdiBean.someAction}"></h:commandButton>
+        <p:dataTable value="#{jsonViewBean.productList}" var="product" id="products_table">
+            <p:column>
+                <h:outputText value="#{cdiBean.productList.indexOf(product)+1}"></h:outputText>
+            </p:column>
+            <p:column>
+                <h:outputText value="#{product.product_id}"></h:outputText>
+            </p:column>
+            <p:column>
+                <h:outputText value="#{product.resultAmount}"></h:outputText>
+            </p:column>
+        </p:dataTable>
+<!--            <h:commandButton value="Send" action="#{cdiBean.someAction}"></h:commandButton>-->
+<!--            <h:commandButton value="Other" action="#{cdiBean.otherAction}"></h:commandButton>-->
     </h:form>
 </h:body>
 

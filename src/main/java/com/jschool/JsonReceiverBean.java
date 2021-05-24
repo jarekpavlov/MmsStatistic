@@ -7,16 +7,14 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
-import javax.ws.rs.core.MediaType;
+import javax.ejb.Singleton;
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
-@LocalBean
-@Stateless
-public class EjbBean {
+@Singleton
+public class JsonReceiverBean implements Serializable {
 
     public List<CountByProduct> getStatistic(String daysBefore) {
 
@@ -32,7 +30,7 @@ public class EjbBean {
             ClientResponse response = webResource
                     .queryParams(paramMap)
                     .accept("application/json")
-                    .header("user-agent","")
+                    .header("user-agent", "")
                     .get(ClientResponse.class);
             if (response.getStatus() != 200) {
                 throw new RuntimeException("Failed : HTTP error status : " + response.getStatus());
