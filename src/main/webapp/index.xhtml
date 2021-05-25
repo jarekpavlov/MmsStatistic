@@ -11,27 +11,29 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
     <title>Mms Project Statistic</title>
 </h:head>
 
 <h:body>
+    <p:dataTable value="#{jsonViewBean.productList}" var="product" id="products_table">
+        <p:column>
+            <h:outputText value="#{jsonViewBean.productList.indexOf(product)+1}"></h:outputText>
+        </p:column>
+        <p:column>
+            <h:outputText value="#{product.product_id}"></h:outputText>
+        </p:column>
+        <p:column>
+            <h:outputText value="#{product.resultAmount}"></h:outputText>
+        </p:column>
+    </p:dataTable>
     <h:form>
-        <p:dataTable value="#{jsonViewBean.productList}" var="product" id="products_table">
-            <p:column>
-                <h:outputText value="#{cdiBean.productList.indexOf(product)+1}"></h:outputText>
-            </p:column>
-            <p:column>
-                <h:outputText value="#{product.product_id}"></h:outputText>
-            </p:column>
-            <p:column>
-                <h:outputText value="#{product.resultAmount}"></h:outputText>
-            </p:column>
-        </p:dataTable>
-<!--            <h:commandButton value="Send" action="#{cdiBean.someAction}"></h:commandButton>-->
-<!--            <h:commandButton value="Other" action="#{cdiBean.otherAction}"></h:commandButton>-->
+    <f:websocket channel="push">
+        <f:ajax event="updated" render=":products_table" />
+    </f:websocket>
     </h:form>
 </h:body>
 

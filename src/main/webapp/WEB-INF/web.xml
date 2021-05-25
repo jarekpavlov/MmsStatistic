@@ -14,6 +14,12 @@
         <param-value>Development</param-value>
     </context-param>
 
+    <!--Websocket-->
+    <context-param>
+        <param-name>javax.faces.ENABLE_WEBSOCKET_ENDPOINT</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
     <!-- Welcome page -->
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
