@@ -11,9 +11,9 @@ import java.util.List;
 @ApplicationScoped
 public class UpdatePageBean implements Serializable {
 
-    //@Inject
-//    @Push
-//    private PushContext push;
+    @Inject
+    @Push(channel = "channel1")
+    private PushContext pushContext;
 
     @Inject
     private JsonReceiverBean jsonReceiverBean;
@@ -24,7 +24,7 @@ public class UpdatePageBean implements Serializable {
 
         productList = jsonReceiverBean.getStatistic("30");
         System.out.println("in Update page bean");
-       // push.send("updated");
+        pushContext.send("updated");
     }
 
     public List<CountByProduct> getProductList() {

@@ -18,7 +18,7 @@ public class JsonViewBean implements Serializable {
     public List<CountByProduct> getProductList() {
 
         System.out.println("in jsonViewBean");
-       List<CountByProduct> productList = updatePageBean.getProductList();
+        List<CountByProduct> productList = updatePageBean.getProductList();
         return productList;
     }
     public void someAction(){
