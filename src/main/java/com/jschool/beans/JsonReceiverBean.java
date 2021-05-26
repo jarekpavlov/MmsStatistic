@@ -1,4 +1,4 @@
-package com.jschool;
+package com.jschool.beans;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

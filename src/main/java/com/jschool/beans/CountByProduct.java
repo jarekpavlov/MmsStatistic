@@ -1,4 +1,4 @@
-package com.jschool;
+package com.jschool.beans;
 
 public class CountByProduct {
 

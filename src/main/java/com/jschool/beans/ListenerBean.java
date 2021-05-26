@@ -1,18 +1,15 @@
-package com.jschool;
+package com.jschool.beans;
 
 import com.rabbitmq.client.*;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Singleton;
-import javax.ejb.Startup;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.concurrent.TimeoutException;
 
-@Startup
 @Singleton
 public class ListenerBean implements Serializable {
     private final static String QUEUE_NAME = "queue1";
@@ -22,8 +19,7 @@ public class ListenerBean implements Serializable {
     @Inject
     private BeanManager beanManager;
 
-    @PostConstruct
-    void init() throws TimeoutException, IOException {
+    public void init() throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
         connection = factory.newConnection();
