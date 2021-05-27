@@ -1,7 +1,5 @@
 package com.jschool.beans;
 
-import org.primefaces.PrimeFaces;
-
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -20,8 +18,5 @@ public class JsonViewBean implements Serializable {
         System.out.println("in jsonViewBean");
         List<CountByProduct> productList = updatePageBean.getProductList();
         return productList;
-    }
-    public void someAction(){
-        PrimeFaces.current().ajax().update("j_idt6:products_table");
     }
 }
