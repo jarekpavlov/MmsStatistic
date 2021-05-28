@@ -16,35 +16,35 @@
 
 <h:head>
     <title>Mms Project Statistic</title>
+    <style type="text/css">
+        h1, h2 {
+            display: inline;
+        }
+    </style>
 </h:head>
-
 <h:body>
-        <div class="card">
-            <p:dataTable id="products" var="product" value="#{jsonViewBean.productList}">
+        <div class="card" >
+            <p:dataTable  id="products" var="product" value="#{jsonViewBean.productList}" stripedRows="true" >
                 <f:facet name="header">
-                    <div class="p-d flex p-jc-between p-ai-center" >
-                        The Best Products List
-                    </div>
-                    <div style="margin-top: 1.5em">
-                        <p:commandButton id="toggler" type="button" value="Columns" icon="pi pi-align-justify"/>
-                        <p:columnToggler datasource="products" trigger="toggler"/>
-                    </div>
+                    <h2>The Best Products List</h2>
+                    <p:commandButton style="float: right" id="toggler" type="button" value="Columns" icon="pi pi-align-justify"/>
+                    <p:columnToggler datasource="products" trigger="toggler"/>
                 </f:facet>
-                <p:column headerText="Number">
-                    <h:outputText value="#{jsonViewBean.productList.indexOf(product)+1}"/>
+                <p:column  headerText="Number"  >
+                    <h:outputText  value="#{jsonViewBean.productList.indexOf(product)+1}"/>
                 </p:column>
-                <p:column headerText="Id">
-                    <h:outputText value="#{product.product_id}"/>
+                <p:column  headerText="Id">
+                    <h:outputText  value="#{product.product_id}"/>
                 </p:column>
-                <p:column headerText="Total Amount">
+                <p:column  headerText="Total Amount">
                     <h:outputText value="#{product.resultAmount}">
                         <f:convertNumber type="currency" currencySymbol="€"/>
                     </h:outputText>
                 </p:column>
             </p:dataTable>
         </div>
-        <div class="card" style="margin-top: 5em">
-            <p:donutChart id="productsChart" model="#{chartJsView.donutModel}" style="width: 100%; height: 400px;"/>
+        <div class="card" style="margin-top: 0.5em">
+            <p:donutChart id="productsChart" model="#{chartJsView.donutModel}" style="width: 100%; height: 350px;"/>
         </div>
     <h:form>
         <f:websocket channel="channel1">

@@ -8,6 +8,7 @@ import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
 import java.io.IOException;
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeoutException;
 
 @Singleton
@@ -30,7 +31,7 @@ public class ListenerBean implements Serializable {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties,
                                        byte[] body) throws IOException {
-                String message = new String(body, "UTF-8");
+                String message = new String(body, StandardCharsets.UTF_8);
                 System.out.println("Received: '" + message + "'");
                 beanManager.fireEvent(message);
             }
