@@ -1,5 +1,7 @@
 package com.jschool.beans;
 
+import org.apache.log4j.Logger;
+
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -10,12 +12,14 @@ import java.util.List;
 @SessionScoped
 public class JsonViewBean implements Serializable {
 
+    Logger logger = Logger.getLogger(this.getClass());
+
     @Inject
     private UpdatePageBean updatePageBean;
 
     public List<CountByProduct> getProductList() {
 
-        System.out.println("in jsonViewBean");
+        logger.info("in jsonViewBean");
         List<CountByProduct> productList = updatePageBean.getProductList();
         return productList;
     }

@@ -1,5 +1,7 @@
 package com.jschool.beans;
 
+import org.apache.log4j.Logger;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.faces.push.Push;
@@ -10,6 +12,8 @@ import java.util.List;
 
 @ApplicationScoped
 public class UpdatePageBean implements Serializable {
+
+    Logger logger = Logger.getLogger(this.getClass());
 
     @Inject
     @Push(channel = "channel1")
@@ -23,7 +27,7 @@ public class UpdatePageBean implements Serializable {
     public void onUpdate(@Observes String message) {
 
         productList = jsonReceiverBean.getStatistic("30");
-        System.out.println("in Update page bean");
+        logger.info("in Update page bean");
         pushContext.send("updated");
     }
 
