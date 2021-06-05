@@ -20,7 +20,6 @@ public class JsonViewBean implements Serializable {
     public List<CountByProduct> getProductList() {
 
         logger.info("in jsonViewBean");
-        List<CountByProduct> productList = updatePageBean.getProductList();
-        return productList;
+        return updatePageBean.getProductList();
     }
 }

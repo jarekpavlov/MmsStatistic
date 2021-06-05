@@ -4,6 +4,8 @@ public class CountByProduct {
 
     private Long product_id;
     private Double resultAmount;
+    private Integer quantity;
+    private String brand;
 
     public Long getProduct_id() {
         return product_id;
@@ -19,5 +21,21 @@ public class CountByProduct {
 
     public void setResultAmount(Double resultAmount) {
         this.resultAmount = resultAmount;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 }

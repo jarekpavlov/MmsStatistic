@@ -24,19 +24,25 @@
 </h:head>
 <h:body>
         <div class="card" >
-            <p:dataTable  id="products" var="product" value="#{jsonViewBean.productList}" stripedRows="true" >
+            <p:dataTable style="text-align: center"  id="products" var="product" value="#{jsonViewBean.productList}" stripedRows="true" >
                 <f:facet name="header">
                     <h2>The Best Products List</h2>
                     <p:commandButton style="float: right" id="toggler" type="button" value="Columns" icon="pi pi-align-justify"/>
                     <p:columnToggler datasource="products" trigger="toggler"/>
                 </f:facet>
-                <p:column  headerText="Number"  >
+                <p:column style="text-align: center"  headerText="Number"  >
                     <h:outputText  value="#{jsonViewBean.productList.indexOf(product)+1}"/>
                 </p:column>
-                <p:column  headerText="Id">
+                <p:column style="text-align: center"  headerText="Brand">
+                    <h:outputText  value="#{product.brand}"/>
+                </p:column>
+                <p:column style="text-align: center"  headerText="Id">
                     <h:outputText  value="#{product.product_id}"/>
                 </p:column>
-                <p:column  headerText="Total Amount">
+                <p:column style="text-align: center"  headerText="Quantity">
+                    <h:outputText  value="#{product.quantity}"/>
+                </p:column>
+                <p:column style="text-align: center"  headerText="Total Amount">
                     <h:outputText value="#{product.resultAmount}">
                         <f:convertNumber type="currency" currencySymbol="€"/>
                     </h:outputText>

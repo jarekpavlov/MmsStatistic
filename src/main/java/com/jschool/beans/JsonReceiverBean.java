@@ -6,6 +6,7 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
+import org.apache.log4j.Logger;
 
 import javax.ejb.Singleton;
 import javax.ws.rs.core.MultivaluedMap;
@@ -15,6 +16,8 @@ import java.util.List;
 
 @Singleton
 public class JsonReceiverBean implements Serializable {
+
+    Logger logger = Logger.getLogger(this.getClass());
 
     public List<CountByProduct> getStatistic(String daysBefore) {
 
@@ -33,6 +36,7 @@ public class JsonReceiverBean implements Serializable {
                     .header("user-agent", "")
                     .get(ClientResponse.class);
             if (response.getStatus() != 200) {
+                logger.warn("can not get the JSON");
                 throw new RuntimeException("Failed : HTTP error status : " + response.getStatus());
             }
             String output = response.getEntity(String.class);
